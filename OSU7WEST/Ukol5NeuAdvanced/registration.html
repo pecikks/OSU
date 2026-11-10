@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autosalón Web | Registrace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="main-nav">
+    <ul>
+        <li><a href="index.html">Domů</a></li>
+        <li><a href="program.html">Program</a></li>
+        <li><a href="registration.html" class="active">Registrace</a></li>
+        <li class="theme-switcher">
+            <input type="checkbox" id="dark-mode-toggle" class="hidden-checkbox">
+            <label for="dark-mode-toggle" class="theme-label" title="Přepnout režim">
+                <span class="moon">🌙</span>
+                <span class="sun">☀️</span>
+            </label>
+        </li>
+    </ul>
+</nav>
+
+<main class="content">
+    <form action="#" method="post" class="reg-form">
+        <fieldset>
+            <legend>Osobní údaje</legend>
+
+            <label for="name">Jméno a příjmení:</label>
+            <input type="text" id="name" name="name" required placeholder="Jan Novák">
+
+            <label for="city">Město:</label>
+            <input list="cities" id="city" name="city" required>
+            <datalist id="cities">
+                <option value="Praha">
+                <option value="Brno">
+                <option value="Ostrava">
+                <option value="Plzeň">
+            </datalist>
+
+            <label for="psc">PSČ (formát 000 00):</label>
+            <input type="text" id="psc" name="psc"
+                   pattern="[0-9]{3} [0-9]{2}"
+                   title="Zadejte 5 čísel s mezerou (např. 123 45)"
+                   required>
+
+            <button type="submit">Odeslat přihlášku</button>
+        </fieldset>
+    </form>
+</main>
+</body>
+</html>

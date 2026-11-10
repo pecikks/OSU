@@ -1,0 +1,439 @@
+:root {
+    --primary: #007aff;
+    --accent: #00d4ff;
+    --text: #1d1d1f;
+    --bg-light: #f5f5f7;
+    --glass: rgba(255, 255, 255, 0.7);
+    --shadow: 0 8px 30px rgba(0,0,0,0.12);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+header .highlight {
+    color: #6c5ce7;
+}
+
+header p {
+    color: #636e72;
+    font-weight: 300;
+}
+
+/* --- Navigace --- */
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--glass);
+    backdrop-filter: blur(10px); /* Skleněný efekt */
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.main-nav a:hover { color: var(--primary); }
+
+.main-nav a.active { color: var(--primary); }
+.main-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+}
+/* HERO SEKCE */
+.hero {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    /* Pozadí s 1px vzorem */
+    background-image: url('pattern-1px.png');
+    background-repeat: repeat;
+    background-size: 5px 100%;
+    overflow: visible;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Poloprůhledná vrstva (Overlay) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Text v Hero sekci */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+/* Flexbox */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 100px;
+    gap: 30px;
+}
+
+/* Design oválné karty */
+.card {
+    width: 220px;
+    background: #ffffff;
+    border-radius: 150px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Horní část: Obal obrázku */
+.image-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.95);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+/* Spodní část: Titulek */
+.caption {
+    padding: 25px 15px 40px 15px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #2d3436;
+    background: white;
+}
+
+/* Hover efekty */
+.card:hover {
+    transform: translateY(-15px) scale(1.03);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover .image-wrapper img {
+    transform: scale(1.15);
+    filter: brightness(0.6);
+}
+
+/* Štítek (Badge) */
+.badge {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background: #ff7675;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    pointer-events: none;
+}
+
+/* --- Program Tabulka --- */
+.table-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.program-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.program-table th {
+    background: #fdfdfd;
+    padding: 20px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #888;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.program-table td { padding: 20px; border-bottom: 1px solid var(--bg-light); }
+
+.program-table tr:hover { background: var(--bg-light); }
+
+/* --- Formulář --- */
+.reg-form fieldset {
+    border: none;
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.reg-form legend {
+    float: right;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    color: var(--primary);
+}
+
+.reg-form label { display: block; margin-top: 20px; font-weight: 500; font-size: 0.9rem; }
+
+.reg-form input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 8px;
+    border: 2px solid var(--bg-light);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.reg-form input:focus-visible {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button:hover { background: #0056b3; transform: scale(1.02); }
+
+/* --- Stylování FAQ (details/summary) --- */
+.faq {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.faq h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+details {
+    background: white;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+details[open] {
+    box-shadow: var(--shadow);
+}
+
+summary {
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Přidání vlastní šipky pomocí pseudo-elementu */
+summary::after {
+    content: '→';
+    transition: transform 0.3s;
+    color: var(--primary);
+}
+
+details[open] summary::after {
+    transform: rotate(90deg);
+}
+
+details p {
+    margin-top: 15px;
+    color: #666;
+    border-top: 1px solid var(--bg-light);
+    padding-top: 10px;
+}
+
+/* --- Responsivita --- */
+@media (max-width: 600px) {
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .gallery-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-item {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .program-card {
+        position: static;
+        margin: 20px auto;
+        width: 80%;
+    }
+}
+
+/* --- DOBROVOLNÁ ČÁST: DARK MODE --- */
+/* Základní nastavení přepínače (stejné jako předtím) */
+.hidden-checkbox { display: none; }
+.theme-label {
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+    user-select: none;
+}
+.theme-label .sun { display: none; }
+
+
+/* Hlavní logika :has() a ZMĚNA PROMĚNNÝCH */
+body:has(#dark-mode-toggle:checked) {
+    --bg-light: #121212;
+    --text: #f5f5f7;
+    --glass: rgba(30, 30, 30, 0.8);
+    --shadow: 0 8px 30px rgba(0,0,0,0.5);
+    --primary: #00d4ff;
+}
+
+/* Ztmavíme váš 1px obrázek, aniž by se rozbil vzor, I hope */
+body:has(#dark-mode-toggle:checked) .hero {
+    /* Tmavá barva podkladu */
+    background-color: #1a1a1a;
+
+    /* Is pattern gut? */
+    background-image: url('pattern-1px.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+
+    /* Zatmaví obrázek proti podkladu */
+    background-blend-mode: multiply;
+}
+
+
+/* Aplikace tmavých barev na specifické prvky (stejné jako předtím) */
+body:has(#dark-mode-toggle:checked) .card,
+body:has(#dark-mode-toggle:checked) .table-container,
+body:has(#dark-mode-toggle:checked) .reg-form fieldset,
+body:has(#dark-mode-toggle:checked) details {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+body:has(#dark-mode-toggle:checked) .reg-form input {
+    background: #2a2a2a;
+    border-color: #444;
+    color: white;
+}
+
+/* Změna ikon v labelu při aktivním dark modu */
+body:has(#dark-mode-toggle:checked) .theme-label .moon { display: none; }
+body:has(#dark-mode-toggle:checked) .theme-label .sun { display: inline; }
+
+/* --- Úprava hlavičky tabulky pro Dark Mode --- */
+body:has(#dark-mode-toggle:checked) .program-table thead {
+    background-color: #2a2a2a;
+}
+
+body:has(#dark-mode-toggle:checked) .program-table th {
+    background: #1a1a1a;
+    color: #ffffff;
+    border-bottom: 2px solid #333;
+}
+
+body:has(#dark-mode-toggle:checked) caption {
+    color: #ffffff;
+    background: transparent;
+}
